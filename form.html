@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formulaire avec controle de saisie javascript</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+    
+<form  name = "formulaire" action="#" method="POST" onSubmit="return verif()">
+   
+    
+        <fieldset style="border-radius: 10%;">
+            <legend ><h2>Inscription</h2></legend>
+  <div id="container">
+                     <!--name-->
+                    <div class="page1">
+                        <label for="name"  >Prénom et Nom* :</label>
+                 <input type="text" id="nom" name="nom" required placeholder="votre nom et prénom">
+             </div>
+             <!--cin-->
+             <div class="page2">
+                 <label for="name"  >CIN* :</label>
+                 <input type="text" id="cin" name="cin" placeholder="00000000"
+                 width="" maxlength="8" minlength="0" required  > 
+                
+
+             </div>
+             <!--mail-->
+             <div class="page3">
+                 <label for="name"  >Adresse mail* :</label>
+                 <input type="text" id="mail" name="mail" required placeholder="exemple@gmail.com"> 
+                  
+             </div>
+             <!-----niveau scolaire-->
+             
+             <div class="page4">
+                 <label for="" >Niveau scolaire :</label>
+                <input type="radio" name="" id="s" checked>
+                 <label for="">Secondaire</label>
+                <input type="radio" name="" id="s">
+                 <label for="">Universitaire</label>
+                 <input type="radio" name="" id="s">
+                 <label for=""> Autre</label>
+                </div>
+                <!-----modules de formation-->
+             <div class="page5">
+                 <label for="">Modules de formation :</label>
+                 <select multiple id="f">
+                   
+                        <option id="fo" selected value=""  > HTML5</option>
+                        <option id="fo" selected value=""> CSS3 </option>
+                        <option id="fo" selected value=""> JavaScript</option>
+                        <option id="fo" selected value="">JQuery</option>
+                
+                    </select>
+             </div>
+             <div class="page6">
+                 <h5>
+                     (*) champs obligatoires
+                 </h5>
+             </div>
+             <!----button-->
+             <div class="page7">
+                 <input onclick="return verif()"  type="submit" value="envoyer">
+                 <input type="submit" value="annuler">
+            
+                  
+             </div>
+            
+             </div>
+                
+                
+     
+            
+         </fieldset>
+     </form>
+     <script>
+         //**function
+         function verif()
+{
+    a = formulaire.nom.value;
+  exp=/^[A-Z]{1}[a-z ]+$/;
+  if(exp.test(a)==false ) 
+ {
+ alert ("Merci de saisir votre nom et prénom ! la première lettre doit être majuscule! ")
+  return false; 
+  nom.classList.add("erreur");}
+//**CIN
+if(formulaire.cin.value.length !=8 || isNaN(formulaire.cin.value))
+{alert ("veuillez saisir correctement")
+
+    return false;
+    cin.classList.add("erreur");
+}
+//**mail
+else if ((formulaire.mail.value =="") ||(formulaire.mail.value.indexOf('@')==1)||
+  (formulaire.mail.value.indexOf('.')<0))
+{alert ("vous devez le remplir correctement !")
+  return false;}
+
+ //**niveau scolaire
+else if ((!formulaire.s[0].checked)&&(formulaire.s[1].checked==false)&&(formulaire.s[2].checked==false))
+{
+        alert("choisir votre niveau scolaire!")
+        return false;
+}
+//**formation
+
+
+else if (formulaire.f.selectedIndex ==0)
+{
+  alert("vous devez choisir  une formation!!")
+  return false;
+  
+  
+}
+return true;
+
+
+
+} //** fin fonction 
+     </script>
+     
+
+         
+</body>
+</html>
